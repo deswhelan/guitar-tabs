@@ -1,22 +1,31 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import Song from './Song'
+// import Song from './Song'
 
-const Songlist = ({Songlist}) => (
+const Songlist = ({songList, artistName}) => (
+  
+
   <div>
-    {Songlist.map((song, i) =>
+    <h1>{artistName}</h1>
+    <ul>
+      {songList.map(song => {
+        return <li>{song.title}</li>
+      })}
+    </ul>
+    {/* {Songlist.map((song, i) =>
       <Song
         key={i}
         title={song.title}
       />
-    )}
+    )} */}
   </div>
 )
 
 const mapStateToProps = (state) => {
   return {
-    Songlist: state.songlist
+    songList: state.songList,
+    artistName: state.artistName
   }
 }
 
