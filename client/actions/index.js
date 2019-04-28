@@ -12,7 +12,6 @@ export const showError = (errorMessage) => {
 }
 
 export function fetchArtist (artist) {
-  console.log("fetching artist");
   return (dispatch) => {
     return request
       .get(`http://www.songsterr.com/a/ra/songs.json?pattern=${artist}`)
