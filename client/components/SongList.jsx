@@ -10,7 +10,7 @@ const Songlist = ({songList, artistName}) => (
     <h1>{artistName}</h1>
     <ul>
       {songList.map(song => {
-        return <li>{song.title}</li>
+        return <li><a href={`https://www.songsterr.com/a/wa/song?id=${song.id}`}>{song.title}</a></li>
       })}
     </ul>
     {/* {Songlist.map((song, i) =>
