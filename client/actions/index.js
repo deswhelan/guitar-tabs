@@ -1,7 +1,15 @@
 import request from 'superagent'
 
-export const FETCH_ARTIST = 'FETCH_ARTIST'
 export const RECEIVE_SONGS = 'RECEIVE_SONGS'
+export const SHOW_ERROR = 'SHOW_ERROR'
+export const SET_ARTIST = 'SET_ARTIST'
+
+export const showError = (errorMessage) => {
+  return {
+    type: SHOW_ERROR,
+    errorMessage: errorMessage
+  }
+}
 
 export function fetchArtist (artist) {
   console.log("fetching artist");
@@ -10,6 +18,7 @@ export function fetchArtist (artist) {
       .get(`http://www.songsterr.com/a/ra/songs.json?pattern=${artist}`)
       .then(res => {
         dispatch(receiveSongs(res.body))
+        dispatch(setArtistName(res.body))
         console.log(res.body)
       })
       .catch(err => {
@@ -22,6 +31,14 @@ export const receiveSongs = (songList) => {
   return {
     type: RECEIVE_SONGS,
     songList: songList
+  }
+}
+
+export const setArtistName = (songList) => {
+  let artistName = songList[0].artist.name
+  return {
+    type: SET_ARTIST,
+    artistName: artistName
   }
 }
 
@@ -44,12 +61,7 @@ export const receiveSongs = (songList) => {
 //   }
 // }
 
-// export const showError = (errorMessage) => {
-//   return {
-//     type: SHOW_ERROR,
-//     errorMessage: errorMessage
-//   }
-// }
+
 
 // export function fetchPosts (subreddit) {
 //   return (dispatch) => {
