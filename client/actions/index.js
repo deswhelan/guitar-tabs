@@ -1,5 +1,21 @@
 import request from 'superagent'
 
+export const FETCH_ARTIST = 'FETCH_ARTIST'
+
+export function fetchArtist (artist) {
+  console.log("fetching artist");
+  return (dispatch) => {
+    return request
+      .get(`http://www.songsterr.com/a/ra/songs.json?pattern=${artist}`)
+      .then(res => {
+        console.log(res.body)
+      })
+      .catch(err => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
 // export const SHOW_ERROR = 'SHOW_ERROR'
 // export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 // export const REQUEST_POSTS = 'REQUEST_POSTS'

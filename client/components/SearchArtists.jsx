@@ -1,5 +1,7 @@
 import React from 'react'
-import {Component} from 'react'
+import {connect} from 'react-redux'
+
+import {fetchArtist} from '../actions'
 
 class SearchArtists extends React.Component {
     constructor (props){
@@ -7,6 +9,7 @@ class SearchArtists extends React.Component {
         this.state = {
             searchValue: ''
         }
+        this.handleClick = this.handleClick.bind(this)
     }
 
     handleChange (e) {
@@ -16,17 +19,20 @@ class SearchArtists extends React.Component {
     }
 
     handleClick () {
-        console.log("handling click!")
+        let {dispatch} = this.props
+        let requestedArtist = this.state.searchValue
+
+        dispatch(fetchArtist(requestedArtist))
     }
 
     render () {
         return (
             <div>
                 <input placeholder="Artist" onChange={e => this.handleChange(e)}></input>
-                <button onClick={this.handleClick}>Search for tabs!</button>
+                <button onClick={() => this.handleClick()}>Search for tabs!</button>
             </div>
         )
     }
 }
 
-export default SearchArtists
+export default connect()(SearchArtists)
