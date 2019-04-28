@@ -5,6 +5,7 @@
   "main": "server/index",
   "scripts": {
     "dev": "nodemon --watch server & webpack --watch",
+    "build": "webpack --watch",
     "test": "jest --watchAll",
     "start": "node server",
     "postinstall": "webpack"
