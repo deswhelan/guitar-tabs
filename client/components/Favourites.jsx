@@ -10,21 +10,20 @@ class Favourites extends React.Component{
     }
 
     render () {
+        console.log(this.props)
         return(
             <div>
                 <h1>Favourites</h1>
                 <button onClick={() => this.handleClick()}>Show favourites</button>
                 <ul>
-                {/* {favourites.map(song => {
+                {this.props.favourites.map(song => {
                     
                     return (
-                    <li key={id}>
-                        <a target="_blank" href={url}>{title}, </a>
-                        <a target="_blank" href={`http://www.songsterr.com/a/wa/artist?id=${artist.id}`}>{artist.name}</a>
-                        <button method="post" id={id} onClick={(e) => handleClick(e)}>Delete from favourites</button>
+                    <li>
+                        {song.song_name}
                     </li>
                     )
-                })} */}
+                })}
                 </ul>
             </div>
         )}
@@ -32,7 +31,7 @@ class Favourites extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
-    // favourites: favourites
+    favourites: state.favourites
   }
 }
 
