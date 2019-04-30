@@ -3,6 +3,9 @@ import request from 'superagent'
 export const RECEIVE_SONGS = 'RECEIVE_SONGS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const SET_ARTIST = 'SET_ARTIST'
+export const SET_FAVOURITES = 'SET_FAVOURITES'
+
+import {getFavourites} from '../api'
 
 export const showError = (errorMessage) => {
   return {
@@ -25,6 +28,15 @@ export function fetchArtist (artist) {
   }
 }
 
+export function fetchFavourites () {
+  return dispatch => {
+    return request
+      .get(`/api/favourites/fetch`)
+      .then(response => response.body)
+      .then(favourites => dispatch(setFavourites(favourites)))
+  }
+}
+
 export const receiveSongs = (songList) => {
   return {
     type: RECEIVE_SONGS,
@@ -37,6 +49,14 @@ export const setArtistName = (songList) => {
   return {
     type: SET_ARTIST,
     artistName: artistName
+  }
+}
+
+export const setFavourites = (favourites) => {
+  console.log("Favourites in action creator: ", favourites)
+  return {
+    type: SET_FAVOURITES,
+    favourites
   }
 }
 

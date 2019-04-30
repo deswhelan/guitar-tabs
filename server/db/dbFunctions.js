@@ -7,9 +7,7 @@ function listFavourites () {
 }
 
 function addNewFavourite (newFavInfo) {
-    
     let {songName, artist, id} = newFavInfo
-    console.log("Adding: ", songName, artist, id)
 
     return db('favourites')
     .insert({

@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-function addToFavourites(songName, artist, id) {
+export function addToFavourites(songName, artist, id) {
    
     // Call the favourites API
     return request.post(`/api/favourites/${songName}/${artist}/${id}`)
@@ -13,4 +13,5 @@ function addToFavourites(songName, artist, id) {
   })
 }
 
-export default addToFavourites
+
+

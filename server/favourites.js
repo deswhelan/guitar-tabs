@@ -20,4 +20,10 @@ router.post('/:songName/:artist/:id', (req, res) => {
 //     })
 })
 
+router.get('/fetch', (req, res) => {
+ 
+    return db.listFavourites()
+    .then(favourites => res.json(favourites))
+})
+
 module.exports = router
