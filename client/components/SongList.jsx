@@ -9,7 +9,7 @@ const Songlist = ({songList}) => (
   <div>
     <ul>
       {songList.map(song => {
-        return <li key={song.id}><a href={`https://www.songsterr.com/a/wa/song?id=${song.id}`}>{song.title}, </a><a href={`http://www.songsterr.com/a/wa/artist?id=${song.artist.id}`}>{song.artist.name}</a></li>
+        return <li key={song.id}><a target="_blank" href={`https://www.songsterr.com/a/wa/song?id=${song.id}`}>{song.title}, </a><a href={`http://www.songsterr.com/a/wa/artist?id=${song.artist.id}`}>{song.artist.name}</a></li>
       })}
     </ul>
   </div>
