@@ -18,7 +18,6 @@ export function fetchArtist (artist) {
       .then(res => {
         dispatch(receiveSongs(res.body))
         dispatch(setArtistName(res.body))
-        console.log(res.body)
       })
       .catch(err => {
         dispatch(showError(err.message))
