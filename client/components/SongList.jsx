@@ -1,9 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import addToFavourites from '../api'
 
-
-// import Song from './Song'
 
 const Songlist = ({songList}) => (
   
