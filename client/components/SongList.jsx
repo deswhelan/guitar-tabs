@@ -16,7 +16,7 @@ const Songlist = ({songList}) => (
           <li key={id}>
             <a target="_blank" href={url}>{title}, </a>
             <a target="_blank" href={`http://www.songsterr.com/a/wa/artist?id=${artist.id}`}>{artist.name}</a>
-            <button songname={title} artist={artist.name} url={url} onClick={(e) => handleClick(e)}>Add to favourites</button>
+            <button method="post" songname={title} artist={artist.name} id={id} onClick={(e) => handleClick(e)}>Add to favourites</button>
           </li>
         )
       })}
@@ -25,11 +25,11 @@ const Songlist = ({songList}) => (
 )
 
 function handleClick (e) {
-  let song = e.target.getAttribute('songname')
+  let songName = e.target.getAttribute('songname')
   let artist = e.target.getAttribute('artist')
-  let url = e.target.getAttribute('url')
+  let id = e.target.getAttribute('id')
 
-  addToFavourites(song, artist, url)
+  addToFavourites(songName, artist, id)
 }
 
 const mapStateToProps = (state) => {

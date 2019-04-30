@@ -1,12 +1,14 @@
 const express = require('express')
-const request = require('superagent')
+
+const db = require('./db/dbFunctions')
 
 const router = express.Router()
 
 router.use(express.json())
 
-router.get('/', (req, res) => {
-    console.log("API request made it through routes!!")
+router.post('/:songName/:artist/:id', (req, res) => {
+    db.addNewFavourite(req.params)
+    
 //   request
 //     .get(`http://www.reddit.com/r/${req.params.subreddit}.json`)
 //     .end((err, result) => {
