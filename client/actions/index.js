@@ -4,6 +4,7 @@ export const RECEIVE_SONGS = 'RECEIVE_SONGS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const SET_ARTIST = 'SET_ARTIST'
 export const SET_FAVOURITES = 'SET_FAVOURITES'
+export const SEARCHING = 'SEARCHING'
 
 export const showError = (errorMessage) => {
   return {
@@ -12,8 +13,15 @@ export const showError = (errorMessage) => {
   }
 }
 
+export function searchingForSongs () {
+  return {
+    type: SEARCHING
+  }
+}
+
 export function fetchArtist (artist) {
   return (dispatch) => {
+    dispatch(searchingForSongs())
     return request
       .get(`http://www.songsterr.com/a/ra/songs.json?pattern=${artist}`)
       .then(res => {
@@ -28,6 +36,7 @@ export function fetchArtist (artist) {
 
 export function fetchFavourites () {
   return dispatch => {
+    dispatch()
     return request
       .get(`/api/favourites/fetch`)
       .then(response => response.body)
