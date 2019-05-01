@@ -36,7 +36,6 @@ export function fetchArtist (artist) {
 
 export function fetchFavourites () {
   return dispatch => {
-    // dispatch()
     return request
       .get(`/api/favourites/fetch`)
       .then(response => response.body)

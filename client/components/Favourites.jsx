@@ -12,12 +12,13 @@ class Favourites extends React.Component{
 
     deleteFavouriteClick = (e) => {
         deleteFavourite(e.target.title)
+        .then(this.props.goFetchFavourites())
     }
 
     render () {
 
         return(
-            <div>
+            <div id="favourites">
                 <h1>Favourites</h1>
                 <button onClick={() => this.showFavouritesClick()}>Show favourites</button>
                 <ul>
@@ -52,7 +53,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        goFetchFavourites: () => dispatch(fetchFavourites())
+        goFetchFavourites: () => dispatch(fetchFavourites()),
     }
 }
 

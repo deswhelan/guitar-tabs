@@ -30,7 +30,6 @@ class SearchArtists extends React.Component {
         if (!e) e = window.event;
         var keyCode = e.keyCode || e.which;
         if (keyCode == '13'){
-            console.log("enter pressed!")
             // Enter pressed
             let {dispatch} = this.props
             let requestedArtist = this.state.searchValue

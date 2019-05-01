@@ -10,8 +10,10 @@ const App = () => (
   <div className='app'>
     <SearchArtists />
     <WaitIndicator />
-    <SongList />
-    <Favourites />
+    <div id="songlist-container">
+      <SongList />
+      <Favourites />
+    </div>
     <ErrorMessage />
   </div>
 )

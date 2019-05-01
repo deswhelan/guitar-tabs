@@ -1,5 +1,7 @@
 import request from 'superagent'
 
+import setFavourites from './actions'
+
 export function addToFavourites(songName, artist, id) {
    
     // Call the favourites API
@@ -13,10 +15,9 @@ export function addToFavourites(songName, artist, id) {
   })
 }
 
-export function deleteFavourite(songName) {
+export function deleteFavourite(songName, fetchFavourites) {
 
     return request.post(`api/favourites/delete/${songName}`)
-    .then(res => console.log("made it back to API!"))
     .catch(err => {
       // eslint-disable-next-line no-console
       console.error('Could not delete from favourites', err)

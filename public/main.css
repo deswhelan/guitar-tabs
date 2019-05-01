@@ -12,3 +12,23 @@
 #wait-indicator {
   height: 100px
 }
+
+#songlist-container {
+  display: inline-block;
+  width: 100%
+}
+
+#songlist {
+  float: left;
+  /* margin-right: 10px; */
+  width:calc(50% - 5px); /*half of margin-right*/
+  display:block;
+  height: auto
+}
+
+#favourites {
+  float: left;
+  display:block;
+  width:calc(50% - 5px); /*half of margin-right from .left-div*/
+  height: auto
+}
