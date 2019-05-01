@@ -18,7 +18,15 @@ function addNewFavourite (newFavInfo) {
     .then(() => {})
 }
 
+function deleteFavourite (songName) {
+    return db('favourites')
+    .where('song_name', songName)
+    .del()
+    .then(() => {})
+}
+
 module.exports = {
     listFavourites,
-    addNewFavourite
+    addNewFavourite,
+    deleteFavourite
 }

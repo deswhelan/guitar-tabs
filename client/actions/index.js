@@ -51,7 +51,6 @@ export const setArtistName = (songList) => {
 }
 
 export const setFavourites = (favourites) => {
-  console.log("Favourites in action creator: ", favourites)
   return {
     type: SET_FAVOURITES,
     favourites

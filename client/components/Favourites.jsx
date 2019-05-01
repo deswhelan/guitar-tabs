@@ -2,11 +2,16 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {fetchFavourites} from '../actions'
+import {deleteFavourite} from '../api'
 
 class Favourites extends React.Component{
 
-    handleClick = (e) => {
+    showFavouritesClick = (e) => {
         this.props.goFetchFavourites()
+    }
+
+    deleteFavouriteClick = (e) => {
+        deleteFavourite(e.target.title)
     }
 
     render () {
@@ -14,7 +19,7 @@ class Favourites extends React.Component{
         return(
             <div>
                 <h1>Favourites</h1>
-                <button onClick={() => this.handleClick()}>Show favourites</button>
+                <button onClick={() => this.showFavouritesClick()}>Show favourites</button>
                 <ul>
                 {this.props.favourites.map(song => {
 
@@ -27,10 +32,10 @@ class Favourites extends React.Component{
                     let {title, artist, url} = songData
                     
                     return (
-                    <li>
+                    <li key={url}>
                         <a target="_blank" href={url}>{title}, </a>
                         <a target="_blank">{artist}</a>
-                        <button method="post" songname={title} artist={artist} onClick={(e) => handleClick(e)}>Remove from favourites</button>
+                        <button method="post" songname={title} title={title} onClick={(e) => this.deleteFavouriteClick(e)}>Remove from favourites</button>
                     </li>
                     )
                 })}
