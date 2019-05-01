@@ -10,6 +10,7 @@ class SearchArtists extends React.Component {
             searchValue: ''
         }
         this.handleClick = this.handleClick.bind(this)
+        this.handleEnter = this.handleEnter.bind(this)
     }
 
     handleChange (e) {
@@ -25,10 +26,22 @@ class SearchArtists extends React.Component {
         dispatch(fetchArtist(requestedArtist))
     }
 
+    handleEnter (e) {
+        if (!e) e = window.event;
+        var keyCode = e.keyCode || e.which;
+        if (keyCode == '13'){
+            console.log("enter pressed!")
+            // Enter pressed
+            let {dispatch} = this.props
+            let requestedArtist = this.state.searchValue
+            dispatch(fetchArtist(requestedArtist))
+        }
+      }
+
     render () {
         return (
             <div>
-                <input placeholder="Artist" onChange={e => this.handleChange(e)}></input>
+                <input placeholder="Artist" onChange={e => this.handleChange(e)} onKeyPress={() => this.handleEnter()}></input>
                 <button onClick={() => this.handleClick()}>Search for tabs!</button>
             </div>
         )

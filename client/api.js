@@ -14,8 +14,6 @@ export function addToFavourites(songName, artist, id) {
 }
 
 export function deleteFavourite(songName) {
-    console.log("made it to API")
-    console.log(songName)
 
     return request.post(`api/favourites/delete/${songName}`)
     .then(res => console.log("made it back to API!"))
